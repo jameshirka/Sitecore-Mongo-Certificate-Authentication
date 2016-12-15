@@ -17,10 +17,7 @@ namespace MongoCertificateAuth.Pipelines
 
             if (!string.IsNullOrEmpty(certificateName) && !string.IsNullOrEmpty(certificatePassword))
             {
-                if (verifySslCertificate)
-                {
-                    args.MongoSettings.VerifySslCertificate = false;
-                }
+                args.MongoSettings.VerifySslCertificate = verifySslCertificate;
 
                 var cert = new X509Certificate2(certificateName, certificatePassword);
                 args.MongoSettings.SslSettings = new SslSettings
